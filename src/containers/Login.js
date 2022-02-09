@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import LoaderButton from "../Components/LoaderButton";
 import "./Login.css";
 import { useAppContext } from "../lib/contexLib";
 import { useHistory } from "react-router-dom";
+import { onError } from "../lib/errorLib";
 
 export default function Login() {
   const { userHasAuthenticated } = useAppContext();
   //store what the user enters in the
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
   function validateForm() {
@@ -19,6 +21,7 @@ export default function Login() {
   async function handleSubmit(event) {
     //event.onload();
     event.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch(
@@ -39,13 +42,13 @@ export default function Login() {
       const { data } = await response.json();
       const jotToken = JSON.stringify(data.token);
       localStorage.setItem(`stAuth`, jotToken);
-      alert("Logged in");
+      //alert("Logged in");
       userHasAuthenticated(true);
       history.push("/");
       console.log(localStorage);
       //console.log(jotToken);
     } catch (e) {
-      alert(e.message);
+      onError(e);
     }
   }
   return (
@@ -68,9 +71,15 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <LoaderButton
+          block
+          size="lg"
+          type="submit"
+          isLoading={isLoading}
+          disabled={!validateForm()}
+        >
           Login
-        </Button>
+        </LoaderButton>
       </Form>
     </div>
   );

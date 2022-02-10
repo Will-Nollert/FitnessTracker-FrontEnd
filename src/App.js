@@ -7,6 +7,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contexLib";
 import { useHistory } from "react-router-dom";
 
+
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);

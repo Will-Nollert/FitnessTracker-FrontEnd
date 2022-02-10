@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import axios from "axios";
 
 export default function Login() {
   //store what the user enters in the
@@ -9,35 +10,24 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return username.length > 0 && password.length > 7;
+    return username.length > 0 && password.length > 0;
   }
 
   async function handleSubmit(event) {
     //event.onload();
     event.preventDefault();
 
+    const REGISTRATION_URL =
+      "https://glacial-temple-22682.herokuapp.com/api/users/register";
+
     try {
-      const response = await fetch(
-        `https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/users/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user: {
-              username: username,
-              password: password,
-            },
-          }),
-        }
-      );
-      const { data } = await response.json();
-      localStorage.setItem(`stAuth`, JSON.stringify(data.token));
-      console.log(data.token);
-      alert("Sign-Up compleate, Please Login");
+      const { data: user } = await axios.post(REGISTRATION_URL, {
+        username,
+        password,
+      });
+      console.log(user);
     } catch (e) {
-      alert(e.message);
+      console.error(e);
     }
   }
   return (

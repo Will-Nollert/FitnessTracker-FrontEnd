@@ -4,7 +4,7 @@ import LoaderButton from "../Components/LoaderButton";
 import "./Login.css";
 import { useAppContext } from "../lib/contexLib";
 import { useHistory } from "react-router-dom";
-import { onError } from "../lib/errorLib";
+import axios from "axios";
 
 export default function Login() {
   const { userHasAuthenticated } = useAppContext();
@@ -23,9 +23,25 @@ export default function Login() {
     event.preventDefault();
     setIsLoading(true);
 
+    const LOGIN_URL =
+      "https://glacial-temple-22682.herokuapp.com/api/users/login";
+
     try {
+      const { data: user } = await axios.post(LOGIN_URL, {
+        username,
+        password,
+      });
+      console.log(user.token);
+      userHasAuthenticated(true);
+      history.push("/");
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  /*     try {
       const response = await fetch(
-        `https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/users/login`,
+        `http://fitnesstrac-kr.herokuapp.com/api/users/login`,
         {
           method: "POST",
           headers: {
@@ -33,24 +49,25 @@ export default function Login() {
           },
           body: JSON.stringify({
             user: {
-              username: username,
-              password: password,
+              username,
+              password,
             },
           }),
         }
       );
       const { data } = await response.json();
-      const jotToken = JSON.stringify(data.token);
-      localStorage.setItem(`stAuth`, jotToken);
+      console.log(data);
+      //const jotToken = JSON.stringify(data.token);
+      //localStorage.setItem(`stAuth`, jotToken);
       //alert("Logged in");
       userHasAuthenticated(true);
       history.push("/");
-      console.log(localStorage);
+      //console.log(localStorage);
       //console.log(jotToken);
     } catch (e) {
       onError(e);
     }
-  }
+  } */
   return (
     <div className="Login">
       <Form onSubmit={handleSubmit}>

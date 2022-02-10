@@ -1,14 +1,15 @@
 import React from "react";
+import "./ActivitiesCard.css";
 
 export const ActivitiesCard = ({ activity }) => {
   console.log(activity);
   return (
-    <div id="postCards">
-      <h2 className="postCardElements" id="postCardTitle">
+    <div id="activitiesCard">
+      <h2 className="activitiesCardElements" id="activitiesCardTitle">
         {activity.name}
       </h2>
       <hr></hr>
-      <div className="postCardElements">{activity.description}</div>
+      <div className="activitiesCardElements">{activity.description}</div>
     </div>
   );
 };

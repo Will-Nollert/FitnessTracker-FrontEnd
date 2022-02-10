@@ -7,7 +7,6 @@ import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contexLib";
 import { useHistory } from "react-router-dom";
 
-
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -44,6 +43,12 @@ function App() {
                   </LinkContainer>
                   <LinkContainer to="/login">
                     <Nav.Link>Login</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/Routines">
+                    <Nav.Link>Routines</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/Activities">
+                    <Nav.Link>Activities</Nav.Link>
                   </LinkContainer>
                 </>
               )}

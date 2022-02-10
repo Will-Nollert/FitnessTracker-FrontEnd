@@ -6,10 +6,14 @@ export const ActivitiesCard = ({ activity }) => {
   return (
     <div id="activitiesCard">
       <h2 className="activitiesCardElements" id="activitiesCardTitle">
-        {activity.name}
+        <span id="ActivtyNameTag">Activity Name: </span>
+        <span id="ActivityName">{activity.name}</span>
       </h2>
       <hr></hr>
-      <div className="activitiesCardElements">{activity.description}</div>
+      <div className="activitiesCardElements">
+        <span id="ActivtyDescriptionTag">Activity Description: </span>
+        <span id="ActivityDescription">{activity.description}</span>
+      </div>
     </div>
   );
 };

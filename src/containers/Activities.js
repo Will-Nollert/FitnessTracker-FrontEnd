@@ -23,7 +23,6 @@ const Activities = () => {
         <p className="text-muted">list all Activities created</p>
       </div>
       {activity.map((activity) => {
-        //console.log(posts.title)
         return <ActivitiesCard activity={activity} />;
       })}
     </div>

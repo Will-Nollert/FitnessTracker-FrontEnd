@@ -19,7 +19,6 @@ export default function Login() {
   }
 
   async function handleSubmit(event) {
-    //event.onload();
     event.preventDefault();
     setIsLoading(true);
 
@@ -39,35 +38,6 @@ export default function Login() {
     }
   }
 
-  /*     try {
-      const response = await fetch(
-        `http://fitnesstrac-kr.herokuapp.com/api/users/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user: {
-              username,
-              password,
-            },
-          }),
-        }
-      );
-      const { data } = await response.json();
-      console.log(data);
-      //const jotToken = JSON.stringify(data.token);
-      //localStorage.setItem(`stAuth`, jotToken);
-      //alert("Logged in");
-      userHasAuthenticated(true);
-      history.push("/");
-      //console.log(localStorage);
-      //console.log(jotToken);
-    } catch (e) {
-      onError(e);
-    }
-  } */
   return (
     <div className="Login">
       <Form onSubmit={handleSubmit}>

@@ -2,7 +2,6 @@ import React from "react";
 import "./ActivitiesCard.css";
 
 export const ActivitiesCard = ({ activity }) => {
-  console.log(activity);
   return (
     <div id="activitiesCard">
       <h2 className="activitiesCardElements" id="activitiesCardTitle">

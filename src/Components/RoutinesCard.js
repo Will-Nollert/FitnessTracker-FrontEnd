@@ -10,7 +10,7 @@ export const RoutinesCard = ({ routine }) => {
     count: routineActivies.map((a) => a.count + ", "),
   };
 
-  console.log(routine);
+  console.log(name);
 
   return (
     <div id="activitiesCard">

@@ -35,6 +35,7 @@ export default function Login() {
       history.push("/");
     } catch (e) {
       console.error(e);
+      alert(e.message + " incorect Username or Password! ");
     }
   }
 

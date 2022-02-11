@@ -28,6 +28,7 @@ export default function Login() {
       console.log(user);
     } catch (e) {
       console.error(e);
+      alert(e.message + " You must choose a new Username and Password");
     }
   }
   return (

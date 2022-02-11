@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ActivitiesCard } from "../Components/ActivitiesCard";
-import { useAppContext } from "../lib/contexLib";
 
 const Activities = () => {
-  const { userHasAuthenticated } = useAppContext();
   const [activity, setActivity] = useState([]);
 
   const ACTIVITIES_URL =
@@ -22,7 +20,7 @@ const Activities = () => {
     <div className="Home">
       <div className="lander">
         <h1>Activities</h1>
-        <p className="text-muted">list all Activities created</p>
+        <p className="text-muted">LOGGED IN Activities PAGE</p>
       </div>
       {activity.map((activity) => {
         return <ActivitiesCard activity={activity} />;

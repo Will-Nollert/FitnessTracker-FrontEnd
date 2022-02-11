@@ -6,6 +6,8 @@ import Login from "./containers/Login";
 import Signup from "./containers/Signup";
 import Routines from "./containers/Routines";
 import Activities from "./containers/Activities";
+import AuthRoutines from "./containers/AuthRoutines";
+import AuthActivities from "./containers/AuthActivities";
 
 export default function Routes() {
   return (
@@ -24,6 +26,12 @@ export default function Routes() {
       </Route>
       <Route exact path="/Activities">
         <Activities />
+      </Route>
+      <Route exact path="/AuthRoutines">
+        <AuthRoutines />
+      </Route>
+      <Route exact path="/AuthActivities">
+        <AuthActivities />
       </Route>
       <Route>
         <NotFound />

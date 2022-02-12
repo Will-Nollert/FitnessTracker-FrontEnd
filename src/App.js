@@ -20,6 +20,7 @@ function App() {
   function handleLogout() {
     userHasAuthenticated(false);
     history.push("/login");
+    localStorage.clear();
   }
 
   return (

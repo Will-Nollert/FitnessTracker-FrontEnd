@@ -1,0 +1,10 @@
+@media all and (min-width: 480px) {
+  .Home {
+    padding: 60px 0;
+  }
+
+  .newActivty form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}

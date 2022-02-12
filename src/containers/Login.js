@@ -30,7 +30,9 @@ export default function Login() {
         username,
         password,
       });
-      console.log(user.token);
+      const jotToken = user.token;
+      localStorage.setItem(`stAuth`, jotToken);
+      console.log(localStorage);
       userHasAuthenticated(true);
       history.push("/");
     } catch (e) {
